@@ -20,6 +20,7 @@ exports['heino_netscenes']:Thermite(...)
 | --- | --- |
 | Breaching | `Thermite`, `PlantVaultBombs`, `DetonateVaultBombs`, `DetonateCharges`, `PlantCharge`, `Drill`, `VaultDrill` |
 | Containers | `OpenContainer`, `OpenCrate`, `LootCrate` |
+| Dumpsters | `GrabDumpster` |
 | Electrical | `ElectricBox` |
 | Hacking | `HackUSB`, `HackPhone`, `HackLaptop`, `CardSwipe` |
 | Hand-off | `HandOff` |
