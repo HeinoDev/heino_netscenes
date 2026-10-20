@@ -2,21 +2,16 @@ NetSceneLogs = {}
 
 local Webhook = ''
 
-local function SendSceneLog(Source, Message)
+local function SendSceneLog(Message)
     if Webhook == '' then return end
-    if GetResourceState('heino_bridge') ~= 'started' then return end
 
-    exports['heino_bridge']:DiscordWebhook(Source, {
-        Webhook = Webhook,
-        Resource = 'Heino-NetScenes',
-        Message = Message,
-    })
+    PerformHttpRequest(Webhook, function() end, 'POST', json.encode({ username = 'Heino-NetScenes', content = Message }), { ['Content-Type'] = 'application/json' })
 end
 
 function NetSceneLogs.SceneStarted(Source, Name)
-    SendSceneLog(Source, ('Startede scene **%s**'):format(Name))
+    SendSceneLog(('%s startede scene **%s**'):format(GetPlayerName(Source), Name))
 end
 
 function NetSceneLogs.SceneFinished(Source, Name)
-    SendSceneLog(Source, ('Afsluttede scene **%s**'):format(Name))
+    SendSceneLog(('%s afsluttede scene **%s**'):format(GetPlayerName(Source), Name))
 end

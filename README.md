@@ -39,7 +39,7 @@ Set `Config.Debug = true` for debug output and test commands (`/truckscene`, `/t
 
 ## Optional
 
-`heino_minigames`, `st_minigames`, `varhack` for the scenes that use them. `heino_bridge` for Discord logs.
+`heino_minigames`, `st_minigames`, `varhack` for the scenes that use them. Discord logs: set `Webhook` in `server/logs.lua`.
 
 ## License
 
