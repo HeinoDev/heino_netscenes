@@ -36,7 +36,7 @@ local function PlayGrinderSparks(Grinder, Sparks)
 end
 
 local function OpenContainer(Entity, Cb)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('OpenContainer', Entity) then return false end
 
     local Origin = GetEntityCoords(Entity) + ContainerScene.OriginOffset
@@ -58,7 +58,7 @@ end
 exports('OpenContainer', OpenContainer)
 
 local function OpenCrate(Entity, Cb)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('OpenCrate', Entity) then return false end
 
     local Origin = GetEntityCoords(Entity) + CrateScene.OriginOffset
@@ -78,7 +78,7 @@ end
 exports('OpenCrate', OpenCrate)
 
 local function LootCrate(Entity, Cb)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('LootCrate', Entity) then Cb(false) return false end
 
     local Origin = GetEntityCoords(Entity) + LootCrateScene.OriginOffset

@@ -24,7 +24,7 @@ local function PlayDumpsterClip(Entity, Dict)
 end
 
 local function GrabDumpster(Entity, Cb)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('GrabDumpster', Entity) then Cb(false) return false end
 
     local Origin = SceneOrigin(Entity)

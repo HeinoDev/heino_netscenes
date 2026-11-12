@@ -1,6 +1,7 @@
 local Config = lib.load('config')
 
 NetScene = {}
+NetScene.Noop = function() end
 NetScene.Config = Config
 NetScene.Definitions = {}
 NetScene.Bag = Config.Bag
@@ -323,8 +324,10 @@ function NetScene.ReplaceEntity(Entity, Model)
     local Coords = GetEntityCoords(Entity)
     local Heading = GetEntityHeading(Entity)
     local Replacement = NetScene.CreateObject(joaat(Model), vec4(Coords.x, Coords.y, Coords.z, Heading))
+    if not Replacement then return nil end
+
     DeleteEntity(Entity)
-    if Replacement then FreezeEntityPosition(Replacement, true) end
+    FreezeEntityPosition(Replacement, true)
     return Replacement
 end
 

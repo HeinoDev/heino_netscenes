@@ -61,7 +61,7 @@ local function HackGame(Minigame, Options)
 end
 
 local function HackUSB(Minigame, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Origin, Rotation = HackOrigin(Options)
@@ -80,7 +80,7 @@ end
 exports('HackUSB', HackUSB)
 
 local function HackPhone(Minigame, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Origin, Rotation = HackOrigin(Options)
@@ -103,7 +103,7 @@ local function LaptopOrigin(Options)
 end
 
 local function HackLaptop(Minigame, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Origin, Rotation = LaptopOrigin(Options)
@@ -135,7 +135,7 @@ local function SwipeOrigin(Entity, Stage)
 end
 
 local function CardSwipe(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Passed = NetScene.RunMinigame(Options.Minigame)

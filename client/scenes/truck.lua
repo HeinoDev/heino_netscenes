@@ -671,7 +671,7 @@ end
 
 local function TruckScene(Options, Cb)
     Options = Options or {}
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if Busy then Cb(false) return false end
 
     Busy = true

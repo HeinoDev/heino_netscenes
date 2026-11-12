@@ -152,7 +152,7 @@ end
 
 local function Thermite(Options, Cb)
     Options = Options or {}
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
 
     if not NetScene.RunMinigame(Options.Minigame) then Cb(false) return false end
     PlacePedForThermite(Options)
@@ -181,7 +181,7 @@ local function VaultBombOrigin(Definition, Coords)
 end
 
 local function PlantVaultBombs(Coords, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Definition = VaultBombScenes[Options.Side or 'right'] or VaultBombScenes.right
@@ -234,7 +234,7 @@ local function ChargeOrigin(Coords)
 end
 
 local function PlantCharge(Coords, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Origin, Rotation = ChargeOrigin(Coords)
@@ -287,7 +287,7 @@ local function DrillReason(Broke)
 end
 
 local function Drill(Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if Options.Coords then NetScene.MovePed(Options.Coords) end
 
@@ -317,7 +317,7 @@ local function VaultDrillOrigin(Definition, Coords)
 end
 
 local function VaultDrill(Coords, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
 
     local Definition = VaultDrillScenes[Options.Variant or 'laser'] or VaultDrillScenes.laser

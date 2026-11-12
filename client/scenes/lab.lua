@@ -8,9 +8,14 @@ local TakeChemicalScene = NetScene.Define('TakeChemical', {
 })
 
 local function TakeChemical(Tube, Vial, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
-    if not NetScene.ValidateTarget('TakeChemical', Tube) or not NetScene.ValidateTarget('TakeChemical', Vial) then Cb(false) return false end
+    if not NetScene.ValidateTarget('TakeChemical', Tube) then Cb(false) return false end
+    if not NetScene.ValidateTarget('TakeChemical', Vial) then
+        NetScene.Unclaim(Tube)
+        Cb(false)
+        return false
+    end
 
     FreezeEntityPosition(Tube, false)
     FreezeEntityPosition(Vial, false)

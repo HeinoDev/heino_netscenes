@@ -33,7 +33,7 @@ local function HeinoMinigame(Minigame, Seconds, Durations)
 end
 
 local function ElectricBox(Entity, Cb, Time, Minigame, Durations, AfterWin)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('ElectricBox', Entity) then Cb(false) return false end
 
     local Context = NetScene.New(ElectricBoxScene, GetEntityCoords(Entity), GetEntityRotation(Entity), { Target = Entity })

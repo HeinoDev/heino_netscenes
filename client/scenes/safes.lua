@@ -38,7 +38,7 @@ local function SafeCrackMinigame(Locks, Positions)
 end
 
 local function SafeCrack(Entity, Locks, Cb, CreateCam, Positions, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not NetScene.ValidateTarget('SafeCrack', Entity) then Cb(false) return false end
 
@@ -65,7 +65,7 @@ end
 exports('SafeCrack', SafeCrack)
 
 local function CrackStrongbox(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not NetScene.ValidateTarget('CrackStrongbox', Entity) then Cb(false) return false end
 

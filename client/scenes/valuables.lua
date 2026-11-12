@@ -105,7 +105,7 @@ local TableGrabCashScene = NetScene.Define('TableGrabCash', {
 })
 
 local function StealPainting(Entity, Cb, CreateCam)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     if not NetScene.ValidateTarget('StealPainting', Entity) then return false end
 
     local Coords = GetEntityCoords(Entity)
@@ -212,7 +212,7 @@ local function TrolleyRotation(Entity, Flip)
 end
 
 local function CashTrolley(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not NetScene.ValidateTarget('CashTrolley', Entity) then Cb(false) return false end
 
@@ -233,7 +233,7 @@ local function CashTrolley(Entity, Cb, Options)
     local Trolley = Entity
     if AnimateTrolley then HoldTrolley(Context, Entity, Phase) end
     if Phase >= FullPhase and Options.EmptyModel ~= false then
-        Trolley = NetScene.ReplaceEntity(Entity, Options.EmptyModel or CashTrolleyScene.EmptyModel)
+        Trolley = NetScene.ReplaceEntity(Entity, Options.EmptyModel or CashTrolleyScene.EmptyModel) or Entity
     end
     NetScene.WaitRemaining(StartedAt, Duration)
 
@@ -245,7 +245,7 @@ end
 exports('CashTrolley', CashTrolley)
 
 local function GlassCut(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not NetScene.ValidateTarget('GlassCut', Entity) then Cb(false) return false end
 
@@ -291,7 +291,7 @@ local function BreakJewelCase(Entity, BrokenModel)
 end
 
 local function SmashCase(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not Entity or not DoesEntityExist(Entity) then
         lib.print.error('SmashCase: Entity does not exist')
@@ -321,7 +321,7 @@ end
 exports('SmashCase', SmashCase)
 
 local function TableGrab(Entity, Cb, Options)
-    Cb = Cb or function() end
+    Cb = Cb or NetScene.Noop
     Options = Options or {}
     if not NetScene.ValidateTarget('TableGrab', Entity) then Cb(false) return false end
 
